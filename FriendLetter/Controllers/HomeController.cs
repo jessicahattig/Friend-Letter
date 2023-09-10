@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-// using FriendLetter.Models;
+using FriendLetter.Models;
 
 namespace FriendLetter.Controllers
 {
@@ -13,8 +13,12 @@ namespace FriendLetter.Controllers
     public string Goodbye() { return "Goodbye friend."; }
 
     [Route("/")]
-    // Notice the changes below!
-    public ActionResult Letter() { return View(); }
-
+    public ActionResult Letter()
+    {
+      LetterVariable myLetterVariable = new LetterVariable();
+      myLetterVariable.Recipient = "Lina";
+      myLetterVariable.Sender = "Jasmine";
+      return View(myLetterVariable);
+    }
   }
 }
